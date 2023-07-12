@@ -11,16 +11,14 @@ jobs:
       run:
         working-directory: .
     steps:
-    - name: 'GitHub SSH'
-      run: git config --global url."git@github.com:".insteadOf git://github.com/
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: '18'
     - name: Install node dependencies
       run: npm install
     - name: Compile assets
-      run: npm build
+      run: npm run build
     - name: Merge dependencies
       run: |
         mkdir deploy
