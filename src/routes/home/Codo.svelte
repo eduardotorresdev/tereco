@@ -3,29 +3,41 @@
 
 	export let fotos = [
 		{
-			url: 'https://picsum.photos/420/250?random=1',
-			alt: 'Sample'
+			url: '/img/tereco-1.webp',
+			alt: 'Terecô'
 		},
 		{
-			url: 'https://picsum.photos/420/250?random=2',
-			alt: 'Sample'
+			url: '/img/tereco-2.webp',
+			alt: 'Terecô'
 		},
 		{
-			url: 'https://picsum.photos/420/250?random=3',
-			alt: 'Sample'
+			url: '/img/tereco-3.webp',
+			alt: 'Terecô'
 		},
 		{
-			url: 'https://picsum.photos/420/250?random=4',
-			alt: 'Sample'
+			url: '/img/tereco-4.webp',
+			alt: 'Terecô'
 		},
 		{
-			url: 'https://picsum.photos/420/250?random=5',
-			alt: 'Sample'
+			url: '/img/tereco-5.webp',
+			alt: 'Terecô'
 		},
 		{
-			url: 'https://picsum.photos/420/250?random=6',
-			alt: 'Sample'
-		}
+			url: '/img/tereco-6.webp',
+			alt: 'Terecô'
+		},
+		{
+			url: '/img/tereco-7.webp',
+			alt: 'Terecô'
+		},
+		{
+			url: '/img/tereco-8.webp',
+			alt: 'Terecô'
+		},
+		{
+			url: '/img/tereco-9.webp',
+			alt: 'Terecô'
+		},
 	];
 
 	let options = { align: 'center', startIndex: 2 };
@@ -76,6 +88,8 @@
 		position: absolute
 		top: 0
 		left: 0
+		width: 100%
+		height: 100%
 		object-fit: cover
 
 	.codo__description
@@ -100,7 +114,7 @@
 			<ul class="codo__list">
 				{#each fotos as foto}
 					<li class="codo__item">
-						<div class="codo__media">
+						<div href={foto.url} class="codo__media" data-fancybox="gallery">
 							<img src={foto.url} alt={foto.title} class="codo__img" />
 						</div>
 					</li>

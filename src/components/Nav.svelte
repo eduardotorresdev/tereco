@@ -1,5 +1,62 @@
 <script>
+	import { onMount } from 'svelte';
 	import Share from './Share.svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+
+	let current = 'glossario';
+
+	function isActive(element) {
+		const rect = element.getBoundingClientRect();
+		return rect.top < 100;
+	}
+
+	function scrollTo(section) {
+		const glossario = document.querySelector('.glossario');
+		const codo = document.querySelector('.codo');
+		const tereco = document.querySelector('.tereco');
+
+		const sections = {
+			glossario,
+			codo,
+			tereco
+		};
+
+		if (!section in sections) return;
+
+		const offset = 90;
+
+		goto(`/${section}`, { noScroll: true, replaceState: true });
+		requestAnimationFrame(() => {
+			window.scrollTo({
+				top: sections[section].offsetTop - offset,
+				behavior: 'smooth'
+			});
+		});
+	}
+
+	if (typeof document !== 'undefined') scrollTo($page.params.page);
+
+	onMount(() => {
+		const codo = document.querySelector('.codo');
+		const tereco = document.querySelector('.tereco');
+
+		function getCurrentSection() {
+			const exist = [codo, tereco].reduce((prev, element) => {
+				if (isActive(element)) return element;
+
+				return prev;
+			}, null);
+			if (!exist) return 'glossario';
+
+			if (exist === codo) return 'codo';
+			if (exist === tereco) return 'tereco';
+		}
+
+		window.addEventListener('scroll', () => {
+			current = getCurrentSection();
+		});
+	});
 </script>
 
 <style lang="sass">
@@ -64,21 +121,38 @@
             transform: translateX(18.3rem)
 </style>
 
-
 <nav class="nav">
 	<ul class="nav__list">
-		<li class="nav__item nav__item--active">
-			<a href="/" class="nav__link"> Glossário </a>
+		<li class="nav__item" class:nav__item--active={current === 'glossario'}>
+			<a
+				href="/"
+				on:click|preventDefault={() => scrollTo('glossario')}
+				class="nav__link"
+			>
+				Glossário
+			</a>
 		</li>
-		<li class="nav__item">
-			<a href="/" class="nav__link"> Codó </a>
+		<li class="nav__item" class:nav__item--active={current === 'codo'}>
+			<a
+				href="/"
+				on:click|preventDefault={() => scrollTo('codo')}
+				class="nav__link"
+			>
+				Codó
+			</a>
 		</li>
-		<li class="nav__item">
-			<a href="/" class="nav__link"> Terecô </a>
+		<li class="nav__item" class:nav__item--active={current === 'tereco'}>
+			<a
+				href="/"
+				on:click|preventDefault={() => scrollTo('tereco')}
+				class="nav__link"
+			>
+				Terecô
+			</a>
 		</li>
 		<li class="nav__item">
 			<Share />
 		</li>
-        <li class="nav__marker"></li>
+		<li class="nav__marker" />
 	</ul>
 </nav>

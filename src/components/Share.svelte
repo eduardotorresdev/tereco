@@ -3,7 +3,7 @@
     import WhatsApp from '+img/Whatsapp.svelte';
     import Twitter from '+img/Twitter.svelte';
     import Email from '+img/Email.svelte';
-    import LinkedIn from '+img/Linkedin.svelte';
+	import { page } from '$app/stores';
 </script>
 
 <style lang="sass">
@@ -43,7 +43,8 @@
     <ul class="share__list">
         <li class="share__item">
             <a
-                href="https://www.facebook.com/sharer.php?u=[post-url]"
+                target="_blank"
+                href={`https://www.facebook.com/sharer.php?u=${$page.url.href}`}
                 class="share__link"
             >
                 <Facebook />
@@ -51,7 +52,8 @@
         </li>
         <li class="share__item">
             <a
-                href="https://api.whatsapp.com/send?text=[post-title] [post-url]"
+                target="_blank"
+                href={`https://api.whatsapp.com/send?text=No toque do Terecô ${$page.url.href}`}
                 class="share__link"
             >
                 <WhatsApp />
@@ -59,7 +61,8 @@
         </li>
         <li class="share__item">
             <a
-                href="https://twitter.com/share?url=[post-url]&text=[post-title]&via=[via]&hashtags=[hashtags]"
+                target="_blank"
+                href={`https://twitter.com/share?url=${$page.url.href}&text=No toque do Terecô`}
                 class="share__link"
             >
                 <Twitter />
@@ -67,18 +70,11 @@
         </li>
         <li class="share__item">
             <a
-                href="$email = 'mailto:?subject=' . $[post-title] . '&body=Check out this site: '. $[post-url] .'"
+                target="_blank"
+                href={`mailto:?subject=No toque do Terecô&body=Veja agora mesmo o glossário do Terecô: ${$page.url.href}`}
                 class="share__link"
             >
                 <Email />
-            </a>
-        </li>
-        <li class="share__item">
-            <a
-                href="https://www.linkedin.com/shareArticle?url=[post-url]&title=[post-title]"
-                class="share__link"
-            >
-                <LinkedIn />
             </a>
         </li>
     </ul>

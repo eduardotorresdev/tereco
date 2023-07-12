@@ -24,6 +24,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fancyapps/ui": "^5.0.20",
 		"embla-carousel-svelte": "^8.0.0-rc11"
 	}
 }
