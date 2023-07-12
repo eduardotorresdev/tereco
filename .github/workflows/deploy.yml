@@ -18,7 +18,9 @@ jobs:
         cache: 'npm'
         cache-dependency-path: package-lock.json
     - name: Install node dependencies
-      run: npm install
+      run: |
+        git config --global url."git@github.com:".insteadOf git://github.com/
+        npm install
     - name: Compile assets
       run: npm build
     - name: Merge dependencies
