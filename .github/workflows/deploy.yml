@@ -15,12 +15,12 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '18'
-        cache: 'yarn'
-        cache-dependency-path: yarn.lock
+        cache: 'npm'
+        cache-dependency-path: package-lock.json
     - name: Install node dependencies
-      run: yarn install
+      run: npm install
     - name: Compile assets
-      run: yarn build
+      run: npm build
     - name: Merge dependencies
       run: |
         mkdir deploy
