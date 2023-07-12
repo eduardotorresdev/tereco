@@ -1,6 +1,9 @@
 <script>
-    import '+style/global.sass'
+	import '+style/global.sass';
 	import Header from '+components/Header.svelte';
+	import Codo from './home/Codo.svelte';
+	import Citacao from './home/Citacao.svelte';
+	import Tereco from './home/Tereco.svelte';
 </script>
 
 <svelte:head>
@@ -9,3 +12,6 @@
 </svelte:head>
 
 <Header />
+<Codo />
+<Citacao />
+<Tereco />

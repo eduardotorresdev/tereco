@@ -22,5 +22,8 @@
 		"svelte-preprocess": "^5.0.4",
 		"vite": "^4.3.6"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"embla-carousel-svelte": "^8.0.0-rc11"
+	}
 }

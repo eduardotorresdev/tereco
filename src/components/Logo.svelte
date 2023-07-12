@@ -1,5 +1,5 @@
 <script>
-	export let small = false;
+	export let fixed;
 </script>
 
 <style lang="sass">
@@ -10,6 +10,7 @@
         justify-content: center
         position: relative
         padding: 1.25rem 4.75rem 1.25rem 1rem
+        transition: padding 200ms ease
 
     .logo__autora
         position: absolute
@@ -17,6 +18,7 @@
         right: -7rem
         font-size: 0.75rem
         color: color.$color-primary
+        transition: right 200ms ease
 
     .logo__nome
         position: relative
@@ -46,6 +48,11 @@
         transform: translateX(40%)
 
     .logo--small
+        padding: 1.25rem 1rem 1.25rem 1rem
+
+        .logo__autora
+            right: -7.5rem
+
         .logo__nome
             transform: scale(0.7) translateY(-10px)
 
@@ -59,7 +66,7 @@
             transform: scale(0.7) translateX(30%)
 </style>
 
-<div class="logo" class:logo--small={small}>
+<div class="logo" class:logo--small={fixed}>
 	<img src="/img/logo-nome.svg" class="logo__nome" alt="No toque Terecô" />
 	<img src="/img/logo-detalhe-vermelho.svg" class="logo__detalhe logo__detalhe--vermelho" alt="" />
 	<img src="/img/logo-detalhe-amarelo.svg" class="logo__detalhe logo__detalhe--amarelo" alt="" />

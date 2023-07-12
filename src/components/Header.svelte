@@ -1,36 +1,58 @@
 <script>
+	import { onMount } from 'svelte';
 	import Logo from './Logo.svelte';
 	import Nav from './Nav.svelte';
+
+	let fixed = false;
+
+	onMount(() => {
+		window.addEventListener('scroll', (e) => {
+			fixed = window.scrollY > 0;
+		});
+	});
 </script>
 
 <style lang="sass">
+    @use '+style/color'
+
+    .header--fixed
+        position: fixed
+        top: 0
+        left: 0
+        right: 0
+        z-index: 10
+        background: transparentize(color.$bg-primary, 0.3)
+        backdrop-filter: blur(10px)
+
+        .header__container
+            top: 0
+
+        .header__logo
+            top: 0
+
     .header__container
         display: grid
         grid-template-columns: auto auto 1fr
-        column-gap: 2.25rem
+        column-gap: 7rem
         align-items: center
+        position: relative
+        top: 2rem
+        transition: top 200ms ease
 
     .header__logo
         align-self: start
-
-    .header__brasao
-        width: 60px
-        height: 60px
-        object-fit: contain
-        padding: 2rem 0
-
+        position: relative
+        top: -2rem
+        transition: top 200ms ease
 </style>
 
-<header class="header">
+<header class="header" class:header--fixed={fixed}>
 	<div class="container header__container">
 		<div class="header__logo">
-			<Logo />
-		</div>
-		<div class="header__cidade">
-			<img src="/img/brasao-codo.svg" alt="Brasão de Codó" class="header__brasao" />
+			<Logo {fixed} />
 		</div>
 		<div class="header__nav">
-			<Nav />
+			<Nav {fixed} />
 		</div>
 	</div>
 </header>
