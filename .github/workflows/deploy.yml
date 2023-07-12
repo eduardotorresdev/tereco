@@ -21,11 +21,12 @@ jobs:
         mkdir deploy
         mv package.json deploy
         mv node_modules deploy 
+        mv build deploy 
     - name: Deploy
       uses: burnett01/rsync-deployments@5.1
       with:
         switches: -avzr
-        path: deploy
+        path: deploy/
         remote_path: ${{ secrets.DEPLOY_APP_PATH }}
         remote_host: ${{ secrets.DEPLOY_HOST }}
         remote_port: ${{ secrets.DEPLOY_PORT }}
