@@ -12,11 +12,9 @@ jobs:
         working-directory: .
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v3
       with:
-        node-version: '16'
-        cache: 'npm'
-        cache-dependency-path: package-lock.json
+        node-version: '18'
     - name: Install node dependencies
       run: |
         git config --global url."git@github.com:".insteadOf git://github.com/
