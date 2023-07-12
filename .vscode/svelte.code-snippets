@@ -1,0 +1,31 @@
+{
+	// Place your snippets for svelte here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	"Tag style with sass": {
+		"prefix": "stylesass",
+		"body": [
+			"<style lang=\"sass\">",
+			"\t$1",
+            "</style>",
+            ""
+		],
+		"description": "Write tag style with lang sass"
+	},
+    "Use Mixing": {
+		"prefix": "usemix",
+		"body": [
+			"@use \"+style/mixins/$1\"",
+		],
+		"description": "Write sass @use statement for a specific directory"
+	},
+    "Use var": {
+		"prefix": "usevar",
+		"body": [
+			"@use \"+style/$1\"",
+		],
+		"description": "Write sass @use statement for a specific directory"
+	}
+}
