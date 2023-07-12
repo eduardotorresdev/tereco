@@ -59,6 +59,7 @@
         object-fit: cover
         opacity: 0.5
         filter: brightness(1.3)
+        pointer-events: none
 </style>
 
 <section class="tereco">
@@ -72,6 +73,8 @@
 				loop
 				src="/video/video-tereco.mp4"
                 playsinline
+                controls="off"
+                muted
 			/>
 		</header>
 		<div class="tereco__body">
