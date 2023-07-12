@@ -25,6 +25,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fancyapps/ui": "^5.0.20",
-		"embla-carousel-svelte": "^8.0.0-rc11"
+		"embla-carousel-svelte": "^8.0.0-rc11",
+		"fuse.js": "^6.6.2"
 	}
 }

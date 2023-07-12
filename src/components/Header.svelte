@@ -48,9 +48,9 @@
 
 <header class="header" class:header--fixed={fixed}>
 	<div class="container header__container">
-		<div class="header__logo">
+		<a href="/" class="header__logo">
 			<Logo {fixed} />
-		</div>
+		</a>
 		<div class="header__nav">
 			<Nav {fixed} />
 		</div>

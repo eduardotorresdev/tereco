@@ -1,8 +1,9 @@
 <script>
 	export let grupos;
 	import { onMount } from 'svelte';
-    import emblaCarouselSvelte from 'embla-carousel-svelte'
+	import emblaCarouselSvelte from 'embla-carousel-svelte';
 	import ArrowVertical from '../../img/ArrowVertical.svelte';
+	import Fuse from 'fuse.js';
 
 	const letras = Array.from({ length: 26 }, (_, index) =>
 		String.fromCharCode(65 + index)
@@ -28,11 +29,43 @@
 		conteudo = palavra.conteudo;
 	};
 
-    const options = {align: 'start'}
+	const options = { align: 'start' };
+	let optionsLetras = { align: 'start', axis: 'y', slidesToScroll: 4 };
 
-    const letterExists = (letter) => {
-        return grupos.find(grupo => grupo.name === letter) !== undefined
-    }
+	let apiLetras;
+
+	const letterExists = (letter) => {
+		return grupos.findIndex((grupo) => grupo.name === letter);
+	};
+
+	let busca = '';
+	let buscaTimeout = 0;
+	const handleBusca = (e) => {
+		clearTimeout(buscaTimeout);
+		buscaTimeout = setTimeout(() => {
+			busca = e.target.value;
+		}, 300);
+	};
+
+	const filtrar = (dados, busca) => {
+		if (busca === '') return dados;
+
+		const fuse = new Fuse(dados, {
+			keys: ['name', 'grupo.conteudo'],
+			includeScore: true
+		});
+
+		return fuse.search(busca).map((item) => item.item);
+	};
+
+	let apiPalavras;
+	const onInit = (e) => {
+		apiPalavras = e.detail;
+	};
+
+	const scrollPalavras = (index) => {
+		apiPalavras.scrollTo(index);
+	};
 </script>
 
 <style lang="sass">
@@ -57,20 +90,24 @@
         height: 100%
         overflow: hidden
         transform: translateX(-100%)
-        
-    
+
+        .glossario__wrap
+            padding: 1rem 0
 
     .glossario__letras
-        display: grid
-        row-gap: 1rem
+        display: flex
+        flex-direction: column
         list-style-type: none
         padding: 0
         height: 100%
-        overflow: hidden
+        user-select: none
 
     .glossario__letra
         font-family: font.$font-secondary
         font-size: 1.25rem
+        height: 20px
+        touch-action: pan-y
+        margin-bottom: 1rem
 
     .glossario__letra--disabled
         pointer-events: none
@@ -115,6 +152,10 @@
 
     .glossario__wrap
         overflow: hidden
+        cursor: grab
+
+        &:active
+            cursor: grabbing
 
     .glossario__grupos
         cursor: grab
@@ -185,11 +226,14 @@
         color: color.$color-primary
         cursor: pointer
         transition: color 150ms ease, opacity 150ms ease
+        margin-top: 1rem
 
         &:hover
             color: color.$color-tertiary
 
     .glossario__nav--prev
+        margin-top: 0
+        margin-bottom: 1rem
         transform: rotate(180deg)
 
     .glossario__nav:disabled
@@ -223,19 +267,48 @@
 <section class="glossario" class:glossario--fixed={fixed}>
 	<div class="glossario__container container">
 		<div class="glossario__toolbar">
-			<button class="glossario__nav glossario__nav--prev" disabled>
+			<button
+				class="glossario__nav glossario__nav--prev"
+				on:click|preventDefault={() => {
+					apiLetras?.scrollPrev();
+				}}
+			>
 				<ArrowVertical />
 			</button>
-			<ul class="glossario__letras">
-				{#each letras as letra}
-					<li class="glossario__letra" class:glossario__letra--disabled={!letterExists(letra)}>
-						<a href="/" class="glossario__link">
-							{letra}
-						</a>
-					</li>
-				{/each}
-			</ul>
-			<button class="glossario__nav">
+			<div
+				class="glossario__wrap"
+				use:emblaCarouselSvelte={{ options: optionsLetras }}
+				on:emblaInit={(e) => {
+					apiLetras = e.detail;
+				}}
+			>
+				<ul class="glossario__letras">
+					{#each letras as letra}
+						<li
+							class="glossario__letra"
+							class:glossario__letra--disabled={letterExists(letra) === -1}
+						>
+							<a
+								href="/"
+								class="glossario__link"
+								on:click|preventDefault={() => {
+									const index = letterExists(letra);
+
+									if (index !== -1) scrollPalavras(index);
+								}}
+							>
+								{letra}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</div>
+			<button
+				class="glossario__nav"
+				on:click|preventDefault={() => {
+					apiLetras?.scrollNext();
+				}}
+			>
 				<ArrowVertical />
 			</button>
 		</div>
@@ -246,10 +319,15 @@
 					class="glossario__busca"
 					placeholder="procure aqui a tua palavra"
 					autocomplete="off"
+					on:input={handleBusca}
 				/>
-				<div class="glossario__wrap" use:emblaCarouselSvelte={options}>
+				<div
+					class="glossario__wrap"
+					use:emblaCarouselSvelte="{{options}}"
+					on:emblaInit={onInit}
+				>
 					<ul class="glossario__grupos">
-						{#each grupos as grupo}
+						{#each filtrar(grupos, busca) as grupo}
 							<li class="glossario__grupo">
 								<span class="glossario__categoria">{grupo.name}</span>
 								<ul class="glossario__palavras">

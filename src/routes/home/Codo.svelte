@@ -82,6 +82,7 @@
 		position: relative
 		background: color.$bg-secondary
 		width: 100%
+		cursor: pointer
 		padding-top: math.div(25, 42) * 100%
 
 	.codo__img

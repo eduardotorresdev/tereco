@@ -23,7 +23,6 @@
 		};
 
 		if (!section in sections) return;
-
 		const offset = 90;
 
 		goto(`/${section}`, { noScroll: true, replaceState: true });
@@ -35,7 +34,7 @@
 		});
 	}
 
-	if (typeof document !== 'undefined') scrollTo($page.params.page);
+	if (typeof document !== 'undefined' && $page.params.page) scrollTo($page.params.page);
 
 	onMount(() => {
 		const codo = document.querySelector('.codo');
