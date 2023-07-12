@@ -1,9 +1,9 @@
 <script>
 	import Facebook from '+img/Facebook.svelte';
-	import WhatsApp from '+img/WhatsApp.svelte';
+	import WhatsApp from '+img/Whatsapp.svelte';
 	import Twitter from '+img/Twitter.svelte';
 	import Email from '+img/Email.svelte';
-	import LinkedIn from '+img/LinkedIn.svelte';
+	import LinkedIn from '+img/Linkedin.svelte';
 </script>
 
 <style lang="sass">
