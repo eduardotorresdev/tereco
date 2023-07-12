@@ -4,6 +4,7 @@
 
 <style lang="sass">
     @use '+style/color'
+    @use '+style/font'
 
     .nav
         padding-left: 2rem
@@ -28,16 +29,17 @@
         position: absolute
         left: 0
         background: color.$color-primary
-        width: 100px
+        width: 110px
         height: 40px
         border-radius: 1.25rem
         transition: transform 300ms ease, width 300ms ease
 
     .nav__link
         display: inline-block
+        font-family: font.$font-secondary
         color: color.$white
         text-decoration: none
-        padding: 0.25rem 1rem
+        padding: 0.55rem 1rem
         border-radius: 1.25rem
         transition: color 150ms ease, background 150ms ease
 
@@ -54,12 +56,12 @@
     .nav__item--active:nth-child(2)
         ~ .nav__marker
             width: 69px
-            transform: translateX(9.7rem)
+            transform: translateX(10.4rem)
 
     .nav__item--active:nth-child(3)
         ~ .nav__marker
             width: 85px
-            transform: translateX(17.5rem)
+            transform: translateX(18.3rem)
 </style>
 
 

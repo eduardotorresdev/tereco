@@ -33,7 +33,7 @@
     .header__container
         display: grid
         grid-template-columns: auto auto 1fr
-        column-gap: 7rem
+        column-gap: 4rem
         align-items: center
         position: relative
         top: 2rem

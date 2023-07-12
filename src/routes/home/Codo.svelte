@@ -1,6 +1,5 @@
 <script>
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
-	import { onMount } from 'svelte';
 
 	export let fotos = [
 		{
@@ -30,13 +29,6 @@
 	];
 
 	let options = { align: 'center', startIndex: 2 };
-
-	let fixed = false
-	onMount(() => {
-		window.addEventListener('scroll', (e) => {
-			fixed = window.scrollY > 0;
-		});
-	});
 </script>
 
 <style lang="sass">
@@ -52,9 +44,6 @@
 		overflow: hidden
 		padding: 6.5rem 0 4rem
 		margin-top: 0
-
-		&--fixed
-			margin-top: 5.75rem
 
 	.codo__title
 		position: absolute
@@ -104,9 +93,9 @@
 		color: lighten(color.$bg-primary, 9)
 </style>
 
-<section class="codo" class:codo--fixed={fixed}>
+<section class="codo">
 	<div class="codo__container container">
-		<h2 class="codo__title title">UMBANDA, DE CODÓ</h2>
+		<h2 class="codo__title title">TERECÔ, DE CODÓ</h2>
 		<div class="codo__slides" use:emblaCarouselSvelte={{ options }}>
 			<ul class="codo__list">
 				{#each fotos as foto}

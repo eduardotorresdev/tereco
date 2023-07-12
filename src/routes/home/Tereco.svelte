@@ -12,13 +12,14 @@
 
     .tereco__header
         position: relative
-        background: url('/img/bg-tereco.webp') no-repeat center
+        background: #fff
         width: 115%
         height: 320px
 
     .tereco__title
         position: absolute
         left: 1rem
+        z-index: 1
         bottom: 0
         font-family: font.$font-secondary
         font-size: 5rem
@@ -48,12 +49,29 @@
 
         &:nth-child(even)
             color: lighten(color.$bg-primary, 20)
+
+    .tereco__video
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        object-fit: cover
+        opacity: 0.5
+        filter: brightness(1.3)
 </style>
 
 <section class="tereco">
 	<div class="tereco__container container">
 		<header class="tereco__header">
 			<h2 class="tereco__title title">TERECÔ</h2>
+			<!-- svelte-ignore a11y-media-has-caption -->
+			<video
+				class="tereco__video"
+				autoplay
+				loop
+				src="/video/video-tereco.mp4"
+			/>
 		</header>
 		<div class="tereco__body">
 			<div class="tereco__description">
