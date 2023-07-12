@@ -71,6 +71,7 @@
 				autoplay
 				loop
 				src="/video/video-tereco.mp4"
+                playsinline
 			/>
 		</header>
 		<div class="tereco__body">
