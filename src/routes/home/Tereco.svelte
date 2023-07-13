@@ -1,3 +1,18 @@
+<script>
+	import { onMount } from 'svelte';
+
+	let video;
+
+	onMount(() => {
+        const listener = () => {
+            video.play();
+            video.controls = false
+            window.removeEventListener('touchstart', listener);
+        };
+        window.addEventListener('touchstart', listener)
+	});
+</script>
+
 <style lang="sass">
     @use '+style/color'
     @use '+style/font'
@@ -90,13 +105,14 @@
 			<h2 class="tereco__title title">TERECÔ</h2>
 			<!-- svelte-ignore a11y-media-has-caption -->
 			<video
+				bind:this={video}
 				class="tereco__video"
 				autoplay
 				loop
 				src="/video/video-tereco.mp4"
-                playsinline
-                controls="off"
-                muted
+				playsinline
+				controls="off"
+				muted
 			/>
 		</header>
 		<div class="tereco__body">

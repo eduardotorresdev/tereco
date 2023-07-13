@@ -35,6 +35,7 @@
 				behavior: 'smooth'
 			});
 		});
+        close()
 	}
 
 	if (typeof document !== 'undefined' && $page.params.page)

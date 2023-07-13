@@ -303,7 +303,7 @@
             margin-left: 10%
 
         .glossario__toolbar
-            left: 1.5rem
+            left: 2rem
 </style>
 
 <section class="glossario" class:glossario--fixed={fixed}>
