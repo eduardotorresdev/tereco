@@ -9,6 +9,7 @@
 <style lang="sass">
     @use '+style/color'
     @use '+style/font'
+    @use '+style/media' as md
 
     .share__list
         display: grid
@@ -34,6 +35,15 @@
 
     .share__link:hover :global(svg)
         color: color.$color-primary
+
+    +md.tablet-lg
+        .share__list
+            justify-content: start
+            column-gap: 2rem
+
+        .share__title
+            display: inline-block
+            margin-bottom: 1rem
 </style>
 
 

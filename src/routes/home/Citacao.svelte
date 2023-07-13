@@ -1,6 +1,7 @@
 <style lang="sass">
 	@use '+style/color'
 	@use '+style/font'
+	@use '+style/media' as md
 
 	.citacao
 		position: relative
@@ -29,6 +30,20 @@
 		font-family: font.$font-secondary
 		font-size: 1.5rem
 		color: color.$bg-primary
+
+	+md.mobile-md
+		.citacao__description
+			font-size: 1.4rem
+			margin-left: 0
+			margin-right: 0
+
+		.citacao__autoria
+			font-size: 1.25rem
+			margin-top: 1rem
+			margin-left: -8rem
+
+		.citacao__termos
+			font-size: 1.125rem
 </style>
 
 <section class="citacao">

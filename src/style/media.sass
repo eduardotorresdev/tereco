@@ -1,0 +1,53 @@
+// Media Queries
+$default-screen: 1920px - 1px
+$desktop-large: 1680px - 1px
+$desktop-medium: 1440px - 1px
+$desktop-small: 1366px - 1px
+
+$tablet-large: 1280px - 1px
+$tablet-medium: 1024px - 1px
+$tablet-small: 768px - 1px
+
+$mobile-large: 640px - 1px
+$mobile-medium: 480px - 1px
+$mobile-small: 375px - 1px
+
+@mixin default
+    @media (max-width: #{$default-screen})
+        @content
+
+@mixin desktop-lg
+    @media (max-width: #{$desktop-large})
+        @content
+
+@mixin desktop-md
+    @media (max-width: #{$desktop-medium})
+        @content
+
+@mixin desktop-sm
+    @media (max-width: #{$desktop-small})
+        @content
+
+@mixin tablet-lg
+    @media (max-width: #{$tablet-large})
+        @content
+
+@mixin tablet-md
+    @media (max-width: #{$tablet-medium})
+        @content
+
+@mixin tablet-sm
+    @media (max-width: #{$tablet-small})
+        @content
+
+@mixin mobile-lg
+    @media (max-width: #{$mobile-large})
+        @content
+
+@mixin mobile-md
+    @media (max-width: #{$mobile-medium})
+        @content
+
+@mixin mobile-sm
+    @media (max-width: #{$mobile-small})
+        @content

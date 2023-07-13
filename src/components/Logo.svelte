@@ -4,6 +4,7 @@
 
 <style lang="sass">
     @use '+style/color'
+    @use '+style/media' as md
 
     .logo
         display: flex
@@ -30,7 +31,7 @@
 
     .logo__detalhe
         position: absolute
-        top: 0
+        top: -1.8rem
         transition: transform 200ms ease
         transform-origin: center top
 
@@ -54,16 +55,48 @@
             right: -7.5rem
 
         .logo__nome
-            transform: scale(0.7) translateY(-10px)
+            transform: scale(0.8) translateY(-10px)
 
         .logo__detalhe--amarelo
-            transform: scale(0.7)
+            transform: scale(0.8)
 
         .logo__detalhe--vermelho
-            transform: scale(0.7) translateX(-40%)
+            transform: scale(0.8) translateX(-36%)
 
         .logo__detalhe--azul
-            transform: scale(0.7) translateX(30%)
+            transform: scale(0.8) translateX(30%)
+
+    +md.tablet-lg
+        .logo__detalhe--vermelho
+            transform: translate(-40%, 10%)
+
+        .logo__detalhe--azul
+            transform: translate(30%)
+
+    +md.tablet-sm
+        .logo__detalhe
+            top: 0.25rem
+
+        .logo__nome
+            top: 1.75rem
+
+        .logo__autora
+            top: 2rem
+            right: -5rem
+
+        .logo--small
+            .logo__autora
+                right: -7rem
+
+    +md.mobile-md
+        .logo__autora
+            top: 0.5rem
+            right: -4rem
+
+        .logo--small
+            .logo__autora
+                top: 0.5rem
+                right: -5.75rem
 </style>
 
 <div class="logo" class:logo--small={fixed}>

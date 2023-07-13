@@ -71,6 +71,7 @@
 <style lang="sass">
     @use '+style/color'
     @use '+style/font'
+    @use '+style/media' as md
 
     .glossario
         margin: 5rem 0 4rem
@@ -244,12 +245,13 @@
     .glossario__busca
         background: lighten(color.$bg-primary, 10%)
         font-family: font.$font-primary
+        font-size: 1rem
         color: color.$white
         border: 0
         border-radius: 8px
         height: 90%
         box-sizing: border-box
-        padding: 0 1rem
+        padding: 0.5rem 1rem
 
         &:focus
             outline: 2px solid color.$color-quartenary
@@ -262,6 +264,46 @@
         opacity: 0.9
         padding: 0 2.125rem 0 1rem
         margin-top: 1rem
+
+    +md.tablet-lg
+        .glossario--fixed
+            margin-top: 10.8rem
+
+        .glossario__title
+            display: none
+
+        .glossario__toolbar
+            left: -0.5rem
+
+    +md.tablet-md
+        .glossario__body
+            width: 95%
+            margin-left: 2.5%
+
+        .glossario__toolbar
+            left: 0.5rem
+
+    +md.tablet-sm
+        .glossario__header
+            grid-template-columns: 1fr
+            row-gap: 0.75rem
+            padding: 1.125rem
+
+        .glossario__body
+            width: 93%
+            padding: 0 0 1.125rem
+            margin-left: 5%
+
+        .glossario__toolbar
+            left: 1rem
+
+    +md.mobile-md
+        .glossario__body
+            width: 88%
+            margin-left: 10%
+
+        .glossario__toolbar
+            left: 1.5rem
 </style>
 
 <section class="glossario" class:glossario--fixed={fixed}>

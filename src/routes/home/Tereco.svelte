@@ -1,6 +1,7 @@
 <style lang="sass">
     @use '+style/color'
     @use '+style/font'
+    @use '+style/media' as md
 
     .tereco
         padding: 5rem 0 4rem
@@ -60,6 +61,27 @@
         opacity: 0.5
         filter: brightness(1.3)
         pointer-events: none
+
+    +md.tablet-lg
+        .tereco__header
+            width: 100%
+
+    +md.tablet-md
+        .tereco__header
+            height: 280px
+
+        .tereco__title
+            font-size: 4.5rem
+
+    +md.tablet-sm
+        .tereco__body
+            grid-template-columns: 1fr
+            width: 100%
+            margin-top: 1.5rem
+
+        .tereco__termos
+            justify-content: center
+            padding: 0
 </style>
 
 <section class="tereco">
