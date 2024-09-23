@@ -19,6 +19,7 @@
         align-content: center
         list-style-type: none
         padding: 0
+        margin-top: 0.25rem
 
     .share__title
         font-family: font.$font-secondary

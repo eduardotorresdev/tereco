@@ -29,8 +29,8 @@
 		conteudo = palavra.conteudo;
 	};
 
-	const options = { align: 'start' };
-	let optionsLetras = { align: 'start', axis: 'y', slidesToScroll: 4 };
+	const options = { align: 'start', skipSnaps: true, };
+	let optionsLetras = { align: 'start', axis: 'y', slidesToScroll: 4, skipSnaps: true, };
 
 	let apiLetras;
 
@@ -54,6 +54,8 @@
 			keys: ['name', 'grupo.conteudo'],
 			includeScore: true
 		});
+
+        apiPalavras.scrollTo(0)
 
 		return fuse.search(busca).map((item) => item.item);
 	};
@@ -128,7 +130,7 @@
 
     .glossario__header
         display: grid
-        grid-template-columns: 200px 1fr
+        grid-template-columns: 240px 1fr
         column-gap: 2rem
         position: sticky
         background: color.$bg-tertiary
@@ -151,6 +153,10 @@
         align-content: center
         margin: 0
 
+    .glossario__palavras
+        column-gap: 0.35rem
+        padding-right: 1rem
+
     .glossario__wrap
         overflow: hidden
         cursor: grab
@@ -160,7 +166,7 @@
 
     .glossario__grupos
         cursor: grab
-        column-gap: 2.5rem
+        column-gap: 2rem
 
         &:active
             cursor: grabbing
@@ -184,7 +190,7 @@
             line-height: 1.25
             white-space: nowrap
             border-radius: 6px
-            padding: 0.25rem 0.5rem
+            padding: 0.35rem 0.65rem
             transition: background 150ms ease, color 150ms ease
 
             &:hover 
@@ -245,11 +251,11 @@
     .glossario__busca
         background: lighten(color.$bg-primary, 10%)
         font-family: font.$font-primary
-        font-size: 1rem
+        font-size: 0.875rem
         color: color.$white
         border: 0
         border-radius: 8px
-        height: 90%
+        height: 100%
         box-sizing: border-box
         padding: 0.5rem 1rem
 
@@ -258,9 +264,10 @@
 
     .glossario__description
         font-family: font.$font-primary
+        font-size: 1.125rem
         color: color.$white
         text-align: justify
-        line-height: 2.5
+        line-height: 2
         opacity: 0.9
         padding: 0 2.125rem 0 1rem
         margin-top: 1rem
@@ -359,7 +366,7 @@
 				<input
 					type="text"
 					class="glossario__busca"
-					placeholder="procure aqui a tua palavra"
+					placeholder="Procure aqui a tua palavra"
 					autocomplete="off"
 					on:input={handleBusca}
 				/>

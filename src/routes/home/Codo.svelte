@@ -99,7 +99,9 @@
 
 	.codo__description
 		position: relative
+		font-size: 1.125rem
 		color: color.$white
+		line-height: 1.75
 		padding-bottom: 5rem
 		margin-top: 2rem
 

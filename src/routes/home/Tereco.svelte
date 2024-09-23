@@ -50,6 +50,8 @@
         margin-top: 3rem
 
     .tereco__description
+        font-size: 1.125rem
+        line-height: 1.75
         color: color.$white
 
     .tereco__termos

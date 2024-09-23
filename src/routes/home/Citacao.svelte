@@ -16,11 +16,13 @@
 	.citacao__description
 		font-size: 2rem
 		color: color.$white
+		font-weight: 300
 		text-align: center
 
 	.citacao__autoria
 		font-size: 1.5rem
-		color: color.$color-tertiary
+		font-weight: 600
+		color: color.$color-primary
 		margin-left: -15rem
 
 	.citacao__termos
