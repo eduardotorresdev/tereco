@@ -29,8 +29,13 @@
 		conteudo = palavra.conteudo;
 	};
 
-	const options = { align: 'start', skipSnaps: true, };
-	let optionsLetras = { align: 'start', axis: 'y', slidesToScroll: 4, skipSnaps: true, };
+	const options = { align: 'start', skipSnaps: true };
+	let optionsLetras = {
+		align: 'start',
+		axis: 'y',
+		slidesToScroll: 4,
+		skipSnaps: true
+	};
 
 	let apiLetras;
 
@@ -55,7 +60,7 @@
 			includeScore: true
 		});
 
-        apiPalavras.scrollTo(0)
+		apiPalavras.scrollTo(0);
 
 		return fuse.search(busca).map((item) => item.item);
 	};
@@ -83,6 +88,26 @@
 
     .glossario__container
         position: relative
+
+    .glossario__ajuda
+        display: inline-block
+        background: rgb(229,70,70)
+        background: linear-gradient(65deg, rgba(229,70,70,1) 25%, rgba(255,194,13,1) 60%)
+        background-size: 150% 100%
+        background-position: right center
+        font-family: font.$font-secondary
+        font-size: 1.25rem
+        color: color.$bg-primary
+        text-decoration: none
+        cursor: pointer
+        border: 0
+        border-radius: 8px
+        padding: 10px 16px
+        margin: 20px 0
+        transition: background 500ms ease
+
+        &:hover
+            background-position: left center
 
     .glossario__toolbar
         display: grid
@@ -315,6 +340,9 @@
 
 <section class="glossario" class:glossario--fixed={fixed}>
 	<div class="glossario__container container">
+		<a href="/#ajuda" class="glossario__ajuda"> Como eu leio o glossário? </a>
+	</div>
+	<div class="glossario__container container">
 		<div class="glossario__toolbar">
 			<button
 				class="glossario__nav glossario__nav--prev"
@@ -372,7 +400,7 @@
 				/>
 				<div
 					class="glossario__wrap"
-					use:emblaCarouselSvelte="{{options}}"
+					use:emblaCarouselSvelte={{ options }}
 					on:emblaInit={onInit}
 				>
 					<ul class="glossario__grupos">

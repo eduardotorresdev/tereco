@@ -37,7 +37,7 @@
 		{
 			url: '/img/tereco-9.webp',
 			alt: 'Terecô'
-		},
+		}
 	];
 
 	let options = { align: 'center', startIndex: 2 };
@@ -175,17 +175,6 @@
 					</li>
 				{/each}
 			</ul>
-		</div>
-		<div class="codo__description">
-			<span class="codo__glossario">O PROJETO</span>
-			<p>
-				O glossário terminológico dos terecozeiros/umbandistas de Codó foi
-				organizado da seguinte forma: vocábulo-termo-entrada em negrito e com
-				inicial maiúscula; categoria gramatical em itálico; sigla do campo
-				semântico em itálico e negrito cujo vocábulo-termo foi encontrado;
-				definição; entre colchetes o contexto de uso; entre parênteses os dados
-				do colaborador, entre duas barras as variantes, se houver.
-			</p>
 		</div>
 	</div>
 </section>

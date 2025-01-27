@@ -5,6 +5,8 @@
 	import Citacao from '../home/Citacao.svelte';
 	import Tereco from '../home/Tereco.svelte';
 	import Glossario from '../home/Glossario.svelte';
+	import Projeto from '../home/Projeto.svelte';
+	import Ajuda from '../home/Ajuda.svelte';
 	export let data;
 </script>
 
@@ -15,6 +17,8 @@
 
 <Header />
 <Glossario grupos={data.palavras} />
+<Ajuda />
+<Projeto />
 <Codo />
 <Citacao />
 <Tereco />
