@@ -1,3 +1,7 @@
+<script>
+	import Tipbox from '../../components/Tipbox.svelte';
+</script>
+
 <style lang="sass">
     @use '+style/font'
     @use '+style/color'
@@ -148,47 +152,47 @@
 </style>
 
 <section class="ajuda" id="ajuda">
-    <div class="ajuda__container container">
-        <h2 class="ajuda__title title">Como eu leio o Glossário?</h2>
-        <div class="ajuda__description">
-            <p>
-                Para uma proveitosa leitura do glossário, é preciso compreender que
-                apresentamos, em ordem alfabética, o vocábulo-termo-entrada em negrito,
-                em cor vermelha, com letra inicial maiúscula; em seguida, o campo
-                semântico ao qual pertence em negrito e itálico; na linha abaixo, a
-                definição do vocábulo-termo-entrada; em colchete, o contexto de uso;
-                depois, os dados dos colaboradores (a saber: iniciais, sexo e data de
-                realização da entrevista); nos casos em que houve mais de uma
-                denominação, dispomos as variantes separadas por duas barras; e, por
-                último, nos casos em que houve necessidade, inserimos o sistema de
-                remissivas (Ver). Para melhor compreensão, segue o exemplo:
-            </p>
-        </div>
-        <div class="ajuda__exemplo">
-            <span class="ajuda__explicacao">
-                <b>Alvorada espiritual</b>
-                <span class="ajuda__dica">
-                    Vocábulo-termo-entrada
-                </span>
-            </span>.
-            <span class="ajuda__explicacao"><i>Sintagma nominal</i> 
-                <span class="ajuda__dica">
-                    Categoria gramatical
-                </span>
-            </span>.
-            <span class="ajuda__explicacao"><b>AMER</b></span>.
-            <span class="ajuda__explicacao">
-                Matinada religiosa, realizada entre 5 e 6 horas, que dá início à festa
-                anual de uma tenda espiritual e na qual são preparados os filhos de
-                santo em homenagem a Oxalá para pedir proteção.
-            </span>
-
-            <span class="ajuda__explicacao">
-                <b>Contexto de uso:</b> [Alvorada é a abertura do trabalho, é quando a gente
-                vai fazer a festa da gente ou o festejo, aí tem a alvorada de manhã, 5h da
-                manhã, que é a primeira abertura do dia que se chama.] (D.S., sexo masculino,
-                08/09/2023)
-            </span>
-        </div>
-    </div>
+	<div class="ajuda__container container">
+		<h2 class="ajuda__title title">Como eu leio o Glossário?</h2>
+		<div class="ajuda__description">
+			<p>
+				Para uma proveitosa leitura do glossário, é preciso compreender que
+				apresentamos, em ordem alfabética, o vocábulo-termo-entrada em negrito,
+				em cor vermelha, com letra inicial maiúscula; em seguida, o campo
+				semântico ao qual pertence em negrito e itálico; na linha abaixo, a
+				definição do vocábulo-termo-entrada; em colchete, o contexto de uso;
+				depois, os dados dos colaboradores (a saber: iniciais, sexo e data de
+				realização da entrevista); nos casos em que houve mais de uma
+				denominação, dispomos as variantes separadas por duas barras; e, por
+				último, nos casos em que houve necessidade, inserimos o sistema de
+				remissivas (Ver). Para melhor compreensão, segue o exemplo:
+			</p>
+		</div>
+		<div class="ajuda__exemplo">
+			<Tipbox tip="Vocábulo-termo-entrada">
+				<b>Alvorada espiritual</b>
+			</Tipbox>.
+			<Tipbox tip="Categoria gramatical">
+				<i>Sintagma nominal</i>
+			</Tipbox>.
+			<Tipbox tip="Campo semântico">
+				<b>AMER</b>
+			</Tipbox>.
+			<p>
+				<Tipbox tip="Definição" bottom>
+					Matinada religiosa, realizada entre 5 e 6 horas, que dá início à festa
+					anual de uma tenda espiritual e na qual são preparados os filhos de
+					santo em homenagem a Oxalá para pedir proteção.
+				</Tipbox>
+			</p>
+			<p>
+				<Tipbox tip="Contexto de uso" bottom>
+					<b>Contexto de uso:</b> [Alvorada é a abertura do trabalho, é quando a
+					gente vai fazer a festa da gente ou o festejo, aí tem a alvorada de manhã,
+					5h da manhã, que é a primeira abertura do dia que se chama.] (D.S., sexo
+					masculino, 08/09/2023)
+				</Tipbox>
+			</p>
+		</div>
+	</div>
 </section>
