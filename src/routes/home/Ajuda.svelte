@@ -169,6 +169,7 @@
 			</p>
 		</div>
 		<div class="ajuda__exemplo">
+            <p></p>
 			<Tipbox tip="Vocábulo-termo-entrada">
 				<b>Alvorada espiritual</b>
 			</Tipbox>.
@@ -178,7 +179,6 @@
 			<Tipbox tip="Campo semântico">
 				<b>AMER</b>
 			</Tipbox>.
-			<p>
 				<Tipbox tip="Definição" bottom>
 					Matinada religiosa, realizada entre 5 e 6 horas, que dá início à festa
 					anual de uma tenda espiritual e na qual são preparados os filhos de
